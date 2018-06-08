@@ -5,10 +5,22 @@ about ES6 Promises see here: [Promise in MDN](https://developer.mozilla.org/en-U
 
 a chinese document at here: [The Promise's World](http://blog.csdn.net/aimingoo/article/details/47401961)
 
-# Install & Usage
-download the Promise.lua file and put into lua search path or current directory.
+###Table of Contents
+* [Install &amp; Usage](#install--usage)
+* [Interface](#interface)
+* [testcase or samples](#testcase-or-samples)
+* [History](#history)
 
-load it as a file module from lua. use Promise.new() or use Promise.xxx method to get promise object.
+
+# Install & Usage
+download the Promise.lua file and put into lua search path or current directory, and load it as a file module from lua. 
+
+or use luarocks and require as module:
+```bash
+> luarocks install promise-es6
+```
+
+and, use Promise.new() or use Promise.xxx method to get promise object.
 ```lua
 Promise = require('Promise')
 
@@ -29,34 +41,44 @@ end):andThen(..)   -- more
 for the Promsie, call with '.':
 
 > - Promise.new(executor);
->>promise = Promise.new(function(resolve, reject) .. end);
+> ```lua
+> promise = Promise.new(function(resolve, reject) .. end);
+> ```
+```
 >
 > - Promise.all(array);
->>promise = Promise.all(array)	-- a table as array
+​```lua
+promise = Promise.all(array)	-- a table as array
+```
 >
-> - Promise.race(array)	-- a table as array
->>promise = Promise.race(array)	-- a table as array
+>- Promise.race(array)	-- a table as array
+```lua
+promise = Promise.race(array)	-- a table as array
+```
 >
-> - Promise.reject(reason)
->>promise = Promise.reject(reason);	-- reason is anything
+>- Promise.reject(reason)
+```lua
+promise = Promise.reject(reason);	-- reason is anything
+```
 >
-> - Promise.resolve(value)
->>promise = Promise.resolve(value);
->>
->>promise = Promise.resolve(thenable);
->>
->>promise = Promise.resolve(promise);
+>- Promise.resolve(value)
+```lua
+promise = Promise.resolve(value);
+promise = Promise.resolve(thenable);
+promise = Promise.resolve(promise);
+```
 
 for promise instance, call with ':':
 > - promise:andThen(onFulfilled, onRejected)
->>promise2 = promise:andThen(functoin(value) ... end);
->>
->>promise2 = promise:andThen(nil, functoin(reson) ... end);
->>
+```lua
+promise2 = promise:andThen(functoin(value) ... end);
+promise2 = promise:andThen(nil, functoin(reson) ... end);
+```
 >
-> - promise:catch(onRejected)
->>promise2 = promise:catch(functoin(reson) ... end)
-
+>- promise:catch(onRejected)
+```lua
+promise2 = promise:catch(functoin(reson) ... end)
+```
 
 # testcase or samples
 This is a base testcase:
@@ -96,7 +118,13 @@ Promise.all(promises)
 	end)
 ```
 # History
+--	2017.04.26	release v1.2, fix some bugs
+
+>	- fix bug: value deliver on promise chain, about issue-#3, thanks for @stakira
+>	- ignore rewrite promised value
+
 --	2015.10.29	release v1.1, fix some bugs
+
 > 	- update testcases
 > 	- update: add .catch() for promised string
 > 	- update: protect call in .new method

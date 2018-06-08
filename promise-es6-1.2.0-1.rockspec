@@ -1,16 +1,16 @@
 -- This file was automatically generated for the LuaDist project.
 
 package = "promise-es6"
-version = "1.1.0-1"
+version = "1.2.0-1"
 -- LuaDist source
 source = {
-  tag = "1.1.0-1",
+  tag = "1.2.0-1",
   url = "git://github.com/LuaDist-testing/promise-es6.git"
 }
 -- Original source
 -- source = {
---   url = "https://github.com/aimingoo/Promise/archive/v1.1.tar.gz",
---   dir = "Promise-1.1"
+--   url = "https://github.com/aimingoo/Promise/archive/v1.2.tar.gz",
+--   dir = "Promise-1.2"
 -- }
 description = {
   summary = "Promise module in Lua",
